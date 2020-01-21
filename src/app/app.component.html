@@ -1,0 +1,52 @@
+
+<div *ngIf="!user">
+    <app-login></app-login>
+</div>
+
+
+<div *ngIf="user">
+        <mat-toolbar
+        *ngIf="user"
+        id="mainbarra"
+        color="primary">
+        SISTEMA DE MAPEO DE QUETZALTENANGO
+            <span class="example-spacer"></span>
+            
+            
+            <nav class="nav nav-pills nav-justified">
+                    <div class=" btn-group-sm btn-group-toggle" data-toggle="buttons"> 
+
+                <a class="btn btn-primary btn-sm"  routerLink="/mapa"> MAPA  </a>                   
+ 
+                <a class="btn btn-primary btn-sm" routerLink="/emergencia"> DATOS </a>
+                </div>
+           </nav>
+            
+            <button
+            mat-mini-fab
+            [matMenuTriggerFor]="avatarDropDown"
+            class="barra-avatar"
+            color="primary"
+            [ngStyle]="{'background-image': 'url('+user?.photoURL +')'}"
+            >
+            </button>
+        </mat-toolbar>
+        
+          <mat-menu
+          #avatarDropDown="matMenu">
+            
+            <mat-card-subtitle>{{user?.displayName}}</mat-card-subtitle>
+            <mat-card-header>
+            <button
+            mat-icon-button
+            (click)="logout()">
+                SALIR
+               </button>
+            </mat-card-header>
+            </mat-menu>
+        
+        
+        <router-outlet></router-outlet>             
+    </div>
+
+ 

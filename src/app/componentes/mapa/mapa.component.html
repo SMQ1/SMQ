@@ -1,0 +1,104 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+        
+    <form #mapaform="ngForm">
+      <div>
+    <h3>REGISTRO DE DATOS</h3>
+
+    <input type="hidden" name="$keyRegistroMapa" #$keyRegistroMapa="ngModel" 
+    [(ngModel)]="mapaService.selecMapa.$keyRegistroMapa">
+    <br>
+    
+     <label for="nombreM"><b>NOMBRE </b></label>
+    <input type="text" class="form-control" id="nombreLugar"  name="nombreLugar" #nombreLugar ="ngModel" 
+    [(ngModel)]="mapaService.selecMapa.nombreLugar" placeholder="CONDOMINIO">
+
+    <br>
+    <label for="direc"><b>COORDENADAS</b></label>
+    <input type="text" class="form-control" id="coordenadas"  name="coordenadas" #coordenadas ="ngModel" 
+    [(ngModel)]="mapaService.selecMapa.coordenadas" placeholder="INGRESE LAS COORDENADAS">
+    <div>Dirección: {{latitude}}, {{longitude}}</div>
+    
+    <br>
+    <label for="direc"><b>TIPO DE TERRENO </b></label>
+    
+
+      <textarea matInput  class="form-control"  id="tipoterreno"  name="tipoterreno" #tipoterreno ="ngModel" 
+      [(ngModel)]="mapaService.selecMapa.tipoterreno" placeholder="DESCRIBE EL TERRENO"></textarea>
+
+     <br>
+    <label for="direc"><b> LUZ </b></label>
+    
+    <select  class="form-control" id="luz"  name="luz" #luz ="ngModel" 
+    [(ngModel)]="mapaService.selecMapa.luz" aria-placeholder="TIENE LUZ">
+      <option >SI</option>
+      <option >NO</option>
+    </select>
+
+    <br>
+    <label for="direc"><b> AGUA </b></label>
+
+    <select  class="form-control" id="agua"  name="agua" #agua="ngModel" 
+    [(ngModel)]="mapaService.selecMapa.agua" placeholder="TIENE AGUA">
+      <option >SI</option>
+      <option >NO</option>
+    </select>
+   
+    <br>
+    <label for="direc"><b> DRENAGE </b></label>
+    <select  class="form-control" id="drenage"  name="drenage" #drenage ="ngModel" 
+    [(ngModel)]="mapaService.selecMapa.drenage" placeholder="TIENE DRENAGE">
+      <option >SI</option>
+      <option >NO</option>
+    </select>
+   
+
+    <br>
+    <label for="direc"><b> ESTADO  </b></label>
+    
+    <select  class="form-control" id="estadoDeRegistro"  name="estadoDeRegistro" #estadoDeRegistro ="ngModel" 
+    [(ngModel)]="mapaService.selecMapa.estadoDeRegistro" placeholder="ESTADO">
+      <option >VISITADO</option>
+      <option >PENDIENTE</option>
+      <option >NEGADO</option>
+      <option >PROCESO</option>
+    </select>
+    
+
+
+      </div>
+      <div class="text-center">
+          <div class="btn-group btn-group-sm text-center">
+              <button class="btn btn-outline-primary form-control" type="submit" (click)="panico(mapaform)">
+                <i class="fas fa-plus-circle"></i> GUARDAR
+              </button>
+          </div>
+        </div>
+
+      </form>
+      
+  </mat-drawer>
+
+
+  <div class="conteiner">
+   
+    <br>
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <i> REGISTRAR </i>
+    </button>
+  </div>
+<br>
+    <agm-map 
+  [latitude]="latitude" 
+  [longitude]="longitude" 
+  [zoom]="zoom" >
+    <agm-marker 
+    [latitude]="latitude" 
+    [longitude]="longitude"></agm-marker>
+  </agm-map>
+  </div>
+
+  
+
+</mat-drawer-container>
